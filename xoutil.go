@@ -14,11 +14,13 @@ import (
 // SqTime provides a type that will correctly scan the various timestamps
 // values stored by the github.com/mattn/go-sqlite3 driver for time.Time
 // values, as well as correctly satisfying the sql/driver/Valuer interface.
-type SqTime time.Time
+type SqTime struct {
+	time.Time
+}
 
 // Value satisfies the Valuer interface.
 func (t SqTime) Value() (driver.Value, error) {
-	return time.Time(t), nil
+	return t.Time, nil
 }
 
 // Scan satisfies the Scanner interface.
@@ -43,7 +45,7 @@ func (t *SqTime) parse(s string) error {
 	for _, f := range sqlite3.SQLiteTimestampFormats {
 		z, err := time.Parse(f, s)
 		if err == nil {
-			*t = SqTime(z)
+			t.Time = z
 			return nil
 		}
 	}

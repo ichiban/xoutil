@@ -1,6 +1,6 @@
 # About xoutil
 
-Package xoutil provides extra utilities for the [xo cli tool](https://github.com/knq/xo).
+Package xoutil provides extra utilities for the [xo cli tool](https://github.com/xo/xo).
 
-Please see the [GoDoc listing](https://godoc.org/github.com/knq/xoutil) for the
+Please see the [GoDoc listing](https://godoc.org/github.com/xo/xoutil) for the
 full API.

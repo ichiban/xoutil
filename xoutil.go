@@ -26,6 +26,9 @@ func (t SqTime) Value() (driver.Value, error) {
 // Scan satisfies the Scanner interface.
 func (t *SqTime) Scan(v interface{}) error {
 	switch x := v.(type) {
+	case time.Time:
+		t.Time = x
+		return nil
 	case []byte:
 		return t.parse(string(x))
 
